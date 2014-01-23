@@ -1,7 +1,7 @@
 trufflehunter
 =============
 
-A web service to front the handy PgBadger PostgreSQL log parsing tool.
+A front end to the handy PgBadger PostgreSQL log parsing tool.
 Node.js serves the pages, Formidable parses the form, PgBadger parses the PostgreSQL log files, Mutt sends the email, and it all glued together with some Bash.
 
 
