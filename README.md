@@ -23,6 +23,8 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 - Revise so that it is all run by an untrusted user (not root)
 - Add checks so that if the disk space is getting low no more files are accepted.
 - Schedule a process to clean up old files. Links are only shortlived.
+- Remove dependency on mailing the link, make it optional.
+- Add Ajax page to poll for the finished HTML page
 
 
 
