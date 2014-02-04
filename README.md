@@ -1,7 +1,7 @@
 trufflehunter
 =============
 
-A front end to the handy PgBadger PostgreSQL log parsing tool.
+A web front end to the handy PgBadger PostgreSQL log parsing tool.
 Node.js serves the pages, Formidable parses the form, PgBadger parses the PostgreSQL log files, nodemail.js sends the email, and it is all glued together with some Bash.
 
 
