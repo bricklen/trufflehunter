@@ -12,7 +12,7 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 - bootstrap
 - Has so far been tested on CentOS only
 - sendmail, to send notification of completed PgBadger execution.
-- trufflehunter.js listens to port 22089 by default.
+- trufflehunter.js listens to port 80 by default.
 
 
 **Installation**
