@@ -11,6 +11,7 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 - optimist
 - bootstrap
 - Has been tested on CentOS and Mint linux only
+- sendmail, to send notification of completed PgBadger execution.
 
 
 **Installation**
