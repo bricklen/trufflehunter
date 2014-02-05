@@ -17,6 +17,9 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 
 **Installation**
 
+WARNING: These steps are not complete yet. I will work through them over the next few days.
+
+
 CentOS instructions
 Note: these are not complete, nor in order. Some cleanup (and preferably packaging) is required.
 
