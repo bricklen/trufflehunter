@@ -40,7 +40,7 @@ server = http.createServer(function(req, res) {
         var form = new formidable.IncomingForm(),
             files = [],
             fields = [],
-            stream, filename, filename_no_ext, log_line_prefix, email, top_num_queries,
+            stream, filename, filename_no_ext, log_line_prefix, email, top_num_queries, send_email_link,
             randomnumber = Math.floor(Math.random()*100000);
 
         form.uploadDir = uploadDir;
@@ -61,6 +61,9 @@ server = http.createServer(function(req, res) {
                 }
                 if ( field == 'top_num_queries' ) {
                     top_num_queries = value;
+                }
+                if ( field == 'send_email_link' ) {
+                    send_email_link = value;
                 }
             })
 
@@ -112,6 +115,7 @@ server = http.createServer(function(req, res) {
                 stream.write('email="' + email + '"' + "\n");
                 stream.write('logfile="' + filename + '"' + "\n");
                 stream.write('top_num_queries="' + top_num_queries + '"' + "\n");
+                stream.write('send_email_link="' + send_email_link + '"' + "\n");
 
                 stream.end();
             });

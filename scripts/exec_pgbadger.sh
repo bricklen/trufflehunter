@@ -112,6 +112,14 @@ function do_work
         elif [[ "$key" == "top_num_queries" ]]; then
             top_num_queries="$value";
             matched=1;
+        elif [[ "$key" == "send_email_link" ]]; then
+            ## TODO: There could be conflicting directives from the command line flag
+            ## and the the send_email_link value in the .config value.
+            ## Test this more thoroughly and handle which one should win.
+            ## I think the command line flag should take precedence.
+            if [[ "$value" != "off" ]]; then
+                SEND_EMAIL=
+            fi
         fi
     done < "$confname.processing"
 

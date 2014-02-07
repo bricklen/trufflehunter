@@ -56,6 +56,8 @@
         });
         
         $(document).ready( function() {
+        //var send_email_link = $("#btngroup").find("button.active").prop('value');
+
             $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
@@ -76,19 +78,24 @@
 <div class="container" style="margin-top: 20px; margin-left:40px; float:left;">
     <form action="/upload" enctype="multipart/form-data" method="post">
     <div class="control-group">
-        <label class="control-label">Destination Email</label>
+        <label class="control-label">Destination Email
         <div class="controls">
-            <input type="text" name="email" id="email" required value="" class="form-control input-mini" placeholder="Destination Email" autofocus="autofocus" />
+            <input type="text" name="email" id="email" required value="" class="form-control input-mini" placeholder="Destination Email" autofocus="autofocus" style="width:300px" />
             <p class="help-block"></p>
         </div>
+    </label>
+    <P>
 
-        <label class="control-label">Log line prefix</label>
+        <label class="control-label">Log line prefix
         <div class="controls">
             <input type="text" name="log_line_prefix" id="log_line_prefix" required value="" class="form-control input-mini" placeholder="Log line prefix" />
             <p class="help-block"></p>
         </div>
+    </label>
+    <P>
 
-        <label class="control-label">Number of queries to display</label>
+    <BR>
+        <label class="control-label">Number of queries to display
         <select name="top_num_queries" id="top_num_queries" class="form-control input-mini" style="width:150px;">
             <option value="10">10</option>
             <option value="20" selected>20</option>
@@ -97,19 +104,32 @@
             <option value="500">500</option>
             <option value="1000">1000</option>
         </select>
+    </label>
+    <P>
 
-        <BR>
-        <label class="control-label">Choose file to parse</label>
-        <div class="controls">
-            <span class="btn btn-sm btn-primary btn-file">
-                Choose file&hellip; <input type="file" name="upload" id="upload" required />
-            </span>
-            <input type="text" id="fname" name="fname" class="form-control" readonly placeholder="Choose file to upload">
-            <p class="help-block"></p>
+    <label class="control-label">Choose file to parse
+    <div class="controls">
+        <span class="btn btn-sm btn-primary btn-file inline pull-left">
+            Choose file&hellip; <input type="file" name="upload" id="upload" required />
+        </span>
+        <input type="text" id="fname" name="fname" class="form-control" readonly placeholder="Choose file to upload">
+        <p class="help-block"></p>
+    </div>
+    </label>
+
+    <P>
+    <label class="control-label">Email link to results?
+    <div class="btn-group pull-left" data-toggle="buttons">
+        <label class="btn btn-primary"><input type="radio" name="send_email_link" id="yes">Yes</label>
+        <label class="btn btn-primary"><input type="radio" name="send_email_link" id="no">No</label>
+    </div>
+    </label>
+        <BR><P><BR>
+        <div style="border:1px dashed silver;padding:6px 6px 6px 20px;">
+            <i class="fa fa-info-circle"></i>  Log line prefix can be determined by executing:&nbsp;&nbsp;
+            <code>SELECT '"'||current_setting('log_line_prefix')||'"';</code>
         </div>
-        <i class="fa fa-info-circle"></i>  Log line prefix can be determined by executing:&nbsp;&nbsp;
-        <code>SELECT '"'||current_setting('log_line_prefix')||'"';</code>
-        <BR>
+        <BR><P>
         <div class="col-12" style="margin-bottom: 20px;">
             <button class="btn btn-sm btn-primary" type="submit">Go!</button>
         </div>
