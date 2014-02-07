@@ -16,6 +16,8 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 
 **Installation**
 
+- Install node.js. See https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+
 
 Note: these are not complete, nor in order. Some cleanup (and preferably packaging) is required.
 
