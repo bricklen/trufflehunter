@@ -22,8 +22,7 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 Note: these are not complete, nor in order. Some cleanup (and preferably packaging) is required.
 
     sudo yum install node npm
-    sudo mkdir -p /usr/share/npm/node_modules
-    sudo npm config set registry http://registry.npmjs.org/
+    npm config set registry http://registry.npmjs.org/
     sudo npm --prefix /usr/share/npm/node_modules/ install --production
     sudo npm --prefix /usr/share/npm/node_modules install node --save
     sudo npm --prefix /usr/share/npm/node_modules install formidable --save
