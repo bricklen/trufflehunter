@@ -19,7 +19,7 @@ var http = require('http'),
         ".gz": "application/x-gzip"
     };
 var rootpath = __dirname,
-    uploadDir = rootpath + '/' + 'uploads',
+    uploadDir = rootpath + '../public/uploads',
     config_file, fname, dir, ext;
 
 // TODO: Add security measures to prevent users from reading other directories.
