@@ -16,23 +16,43 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 
 
 **Installation**
-Note: these may not be complete. Some cleanup (and preferably packaging) is required.
+
+Note: these steps may not be complete. Some cleanup (and preferably packaging) is desired.
 
     ## Depending on which OS and how node and npm were installed, some permissions might need to be changed.
     sudo chmod a+rw -R /usr/share/npm
     sudo chmod a+x -R /usr/share/npm/node_modules/*
     
+    sudo npm config set registry http://registry.npmjs.org/
     export NODE_MODULES=$HOME/trufflehunter/node_modules
     npm --prefix $NODE_MODULES install node --save
     npm --prefix $NODE_MODULES install formidable@latest --save
     npm --prefix $NODE_MODULES install nodemon@latest --save
     npm --prefix $NODE_MODULES install nodemailer@latest --save
     npm --prefix $NODE_MODULES install optimist@latest --save
-    npm --prefix $NODE_MODULES install semver --save
-    npm --prefix $NODE_MODULES install npm-registry-client --save
+    npm --prefix $NODE_MODULES install semver@latest --save
+    npm --prefix $NODE_MODULES install npm-registry-client@latest --save
     
     # In Ubuntu 13.10, I had to create a symlink to node
     # sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+
+**Usage**
+
+Determine the IP you are going to connect to, to serve the trufflehunter web page. Some methods (depending on your linux distro) include:
+
+    hostname -I
+    /sbin/ip a
+
+If you are serving Trufflehunter internally only, then it probably makes sense to use only the internal IP. If you are exposing it to users outside of your network, then you will probably need to use the external IP (and add firewall rules and lock down the trufflehunter directory!)
+
+Start the node server to listen for connections:
+
+    sudo $HOME/trufflehunter/node_modules/nodemon/bin/nodemon.js trufflehunter.js
+
+Connect to Trufflehunter:
+
+    http://$YOUR_IP/index.html
 
 
 
