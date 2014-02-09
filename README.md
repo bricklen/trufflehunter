@@ -25,15 +25,9 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     
     sudo npm config set registry http://registry.npmjs.org/
     export NODE_MODULES=$HOME/trufflehunter/node_modules
-    npm --prefix $NODE_MODULES install node --save
-    npm --prefix $NODE_MODULES install formidable@latest --save
-    npm --prefix $NODE_MODULES install nodemon@latest --save
-    npm --prefix $NODE_MODULES install nodemailer@latest --save
-    npm --prefix $NODE_MODULES install optimist@latest --save
-    npm --prefix $NODE_MODULES install semver@latest --save
-    npm --prefix $NODE_MODULES install npm-registry-client@latest --save
+    npm --prefix $NODE_MODULES install node -g nodemon@latest -g formidable@latest nodemailer@latest optimist@latest semver@latest npm-registry-client@latest --save
     
-    # In Ubuntu 13.10, I had to create a symlink to node
+    # In Ubuntu 13.10, I had to create a symlink to node if not using the "install -g" flag.
     # sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 
