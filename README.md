@@ -48,7 +48,7 @@ If you are serving Trufflehunter internally only, then it probably makes sense t
 
 Start the node server to listen for connections:
 
-    sudo $HOME/trufflehunter/node_modules/nodemon/bin/nodemon.js trufflehunter.js
+    sudo $HOME/trufflehunter/node_modules/nodemon/bin/nodemon.js $HOME/trufflehunter/scripts/trufflehunter.js
 
 Connect to Trufflehunter:
 
