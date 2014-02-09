@@ -3,7 +3,7 @@
 
 var http = require('http'),
     util = require('util'),
-    formidable = require('formidable'),
+    formidable = require('../node_modules/formidable'),
     server,
     serverport = 80, //22089,
     fs = require('fs');
@@ -32,7 +32,7 @@ server = http.createServer(function(req, res) {
 
     if (req.url == '/') {
         res.writeHead(200, {'content-type': 'text/html'});
-        fs.readFile(rootpath + '/' + fname,function(error,data) { 
+        fs.readFile(rootpath + '../public/' + fname,function(error,data) { 
             res.end(data);
         });
 

@@ -1,6 +1,5 @@
-//var nodemailer = require('../lib/nodemailer');
-var nodemailer = require('/usr/share/npm/node_modules/nodemailer');
-var argv = require('/usr/share/npm/node_modules/optimist')
+var nodemailer = require('nodemailer');
+var argv = require('optimist')
     .usage('Usage: $0 --recipient ["comma-separated list of email addresses"] --url ["http://your.link.com"] --size [bytes]')
     .demand(['recipient','url'])
     .argv;
