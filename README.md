@@ -30,6 +30,9 @@ Note: these may not be complete. Some cleanup (and preferably packaging) is requ
     npm --prefix $NODE_MODULES install optimist@latest --save
     npm --prefix $NODE_MODULES install semver --save
     npm --prefix $NODE_MODULES install npm-registry-client --save
+    
+    # In Ubuntu 13.10, I had to create a symlink to node
+    # sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 
 
