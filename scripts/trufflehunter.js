@@ -19,7 +19,7 @@ var http = require('http'),
         ".gz": "application/x-gzip"
     };
 var rootpath = __dirname,
-    uploadDir = rootpath + '../public/uploads',
+    uploadDir = rootpath + '/../public/uploads',
     config_file, fname, dir, ext;
 
 // TODO: Add security measures to prevent users from reading other directories.
@@ -32,7 +32,7 @@ server = http.createServer(function(req, res) {
 
     if (req.url == '/') {
         res.writeHead(200, {'content-type': 'text/html'});
-        fs.readFile(rootpath + '../public/' + fname,function(error,data) { 
+        fs.readFile(rootpath + '/../public/' + fname,function(error,data) { 
             res.end(data);
         });
 
@@ -183,7 +183,7 @@ server = http.createServer(function(req, res) {
     } else if (ext === '.html') {
         // TODO: Tighten this up so other html files in other directories cannot be read
         res.writeHead(200, {'content-type': 'text/html'});
-        fs.readFile(rootpath + '/' + req.url,function(error,data){
+        fs.readFile(rootpath + '/../public/' + req.url,function(error,data){
             res.end(data);
         });
 
@@ -200,7 +200,7 @@ server = http.createServer(function(req, res) {
 //        });
 
     } else if (ext === '.css') {
-        fs.readFile(__dirname + '/public/css/style.css', function (err, data) {
+        fs.readFile(rootpath + '/../public/css/style.css', function (err, data) {
             if (err) console.log(err);
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.write(data);
@@ -208,7 +208,7 @@ server = http.createServer(function(req, res) {
         });
 
     } else if (ext === '.gif') {
-        fs.readFile(__dirname + '/public/img/' + fname, function (err, data) {
+        fs.readFile(rootpath + '/../public/img/' + fname, function (err, data) {
             if (err) console.log(err);
             res.writeHead(200, {'Content-Type': 'image/gif'});
             res.write(data);
