@@ -22,8 +22,8 @@ Note: these may not be complete. Some cleanup (and preferably packaging) is requ
     sudo chmod a+rw -R /usr/share/npm
     sudo chmod a+x -R /usr/share/npm/node_modules/*
     
-    export NODE_MODULES=/usr/share/npm/node_modules
-    npm --prefix ./node_modules install node --save
+    export NODE_MODULES=$HOME/trufflehunter/node_modules
+    npm --prefix $NODE_MODULES install node --save
     npm --prefix $NODE_MODULES install formidable@latest --save
     npm --prefix $NODE_MODULES install nodemon@latest --save
     npm --prefix $NODE_MODULES install nodemailer@latest --save
