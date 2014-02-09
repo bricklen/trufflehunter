@@ -5,30 +5,29 @@ A web front-end to the handy PgBadger PostgreSQL log parsing tool.
 Node.js serves the pages, Formidable parses the form, PgBadger parses the PostgreSQL log files, nodemail.js sends the email, and it is all glued together with some Bash.
 
 
-**Prerequisites and Dependencies**
+**Prerequisites**
+- node.js - See https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 - npm
-- nodemailer
-- optimist
+
+**Dependencies**
 - bootstrap
 - sendmail, to send notification of completed PgBadger execution.
-- trufflehunter.js listens 0 port 80 by default.
+- trufflehunter.js listens on port 80 by default.
 
 
 **Installation**
+Note: these may not be complete. Some cleanup (and preferably packaging) is required.
 
-- Install node.js. See https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-
-
-Note: these are not complete, nor in order. Some cleanup (and preferably packaging) is required.
-
-    sudo yum install node npm
-    npm config set registry http://registry.npmjs.org/
-    sudo npm --prefix /usr/share/npm/node_modules/ install --production
-    sudo npm --prefix /usr/share/npm/node_modules install node --save
-    sudo npm --prefix /usr/share/npm/node_modules install formidable --save
-    sudo npm --prefix /usr/share/npm/node_modules install nodemon@latest --save
-    sudo npm --prefix /usr/share/npm/node_modules install nodemailer --save
-    sudo npm --prefix /usr/share/npm/node_modules install optimist --save
+    ## Depending on which OS and how node and npm were installed, some permissions might need to be changed.
+    sudo chmod a+rw -R /usr/share/npm
+    sudo chmod a+x -R /usr/share/npm/node_modules/*
+    
+    export NODE_MODULES=/usr/share/npm/node_modules
+    npm --prefix ./node_modules install node --save
+    npm --prefix $NODE_MODULES install formidable@latest --save
+    npm --prefix $NODE_MODULES install nodemon@latest --save
+    npm --prefix $NODE_MODULES install nodemailer@latest --save
+    npm --prefix $NODE_MODULES install optimist@latest --save
 
 
 
@@ -48,7 +47,7 @@ Note: these are not complete, nor in order. Some cleanup (and preferably packagi
 
 
 **Caveats and Bugs**
-- Has so far been tested on CentOS only.
+- The installation process stinks. It would be nicer if everything was bundled together (suggestions welcome!)
 - Security and robustness are sorely lacking.
 
 
