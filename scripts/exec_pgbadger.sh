@@ -32,7 +32,7 @@ npm_prefix=$(npm prefix)
 curdir=`dirname "$(readlink -nf "$0")"`
 
 ## Set this to where the "uploads" directory is
-SRCDIR=${curdir}/uploads
+SRCDIR=${curdir}/../public/uploads
 
 SEND_EMAIL=
 llp=
