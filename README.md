@@ -12,7 +12,7 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 **Dependencies**
 - bootstrap
 - sendmail, to send notification of completed PgBadger execution.
-- trufflehunter.js listens on port 80 by default.
+- trufflehunter.js listens on port 8080 by default.
 
 
 **Installation**
@@ -38,7 +38,7 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     
 A crontab entry must be created (currently, as root) which is what is executed every minute and invokes the pgbadger parser. The parsed file is then optionally emailed to the recipient.
 
-    * * * * * /bin/bash /path/to/trufflehunter/scripts/exec_pgbadger.sh -p 80 >> /var/log/trufflehunter.log
+    * * * * * /bin/bash /path/to/trufflehunter/scripts/exec_pgbadger.sh -p 8080 >> /var/log/trufflehunter.log
 
 
 
