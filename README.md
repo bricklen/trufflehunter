@@ -38,7 +38,7 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     
 A crontab entry must be created for the user who owns the Trufflehunter directory, and the cron job is what is executed every minute and invokes the pgbadger parser. The parsed file is then optionally emailed to the recipient.
 
-    * * * * * /bin/bash /path/to/trufflehunter/scripts/exec_pgbadger.sh -p 8080 >> /var/log/trufflehunter.log
+    * * * * * /bin/bash $HOME/trufflehunter/scripts/exec_pgbadger.sh -p 8080
 
 
 
