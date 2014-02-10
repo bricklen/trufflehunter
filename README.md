@@ -93,6 +93,8 @@ Connect to Trufflehunter:
 **Caveats and Bugs**
 - The installation process could use some TLC. It would be nicer if everything was bundled together (suggestions welcome!)
 - Security and robustness are sorely lacking.
+- There is an unhandled issue between the command-line "-n" flag to disable email sending and the config "send_email_link" value.
+  Need to fix up which value, the "-n" flag or the .config "send_email_link" value, should take precedence.
 
 
 **Attribution**
