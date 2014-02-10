@@ -36,7 +36,11 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     npm --prefix $NODE_MODULES install npm-registry-client@latest --save
     
     # In Ubuntu 13.10, I had to create a symlink to node.js because the "node" app didn't exist.
-    # sudo ln -s /usr/bin/nodejs /usr/bin/node
+    sudo ln -s /usr/bin/nodejs /usr/bin/node
+    
+    # Create a symlink to wherever PgBadger is installed
+    # Assuming PgBadger is installed at $HOME/pgbadger:
+    sudo ln -s $HOME/pgbadger/pgbadger /usr/bin/pgadger
     
 A crontab entry must be created for the user who owns the Trufflehunter directory.
 It is executed every minute and invokes the PgParser parser. The parsed file is then optionally emailed to the recipient.
