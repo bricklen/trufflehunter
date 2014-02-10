@@ -183,7 +183,7 @@ function do_work
     output_htmlname="${fname_no_ext}.html"
     cmd="$pgbadger --prefix '$llp' --top $top_num_queries -j2 -o \"$SRCDIR/$output_htmlname\" \"$SRCDIR/$file_to_parse\""
 
-    echo "$cmd" | bash -l
+    echo "$cmd" | bash --login --noprofile
 
     if [[ "$send_email" != "no" ]]; then
         ## Send the email with the link
