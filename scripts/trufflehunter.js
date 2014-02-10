@@ -5,7 +5,8 @@ var http = require('http'),
     util = require('util'),
     formidable = require('../node_modules/formidable'),
     server,
-    serverport = 80, //22089,
+    serverport = 80, // If changed, reflect the change in the crontab entry,
+                     // the entry which executes exec_pgbadger.sh.
     fs = require('fs');
     path = require("path"),
     extensions = {
