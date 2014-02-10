@@ -26,7 +26,7 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     sudo npm config set registry http://registry.npmjs.org/
     export NODE_MODULES=$HOME/trufflehunter/node_modules
     npm --prefix $NODE_MODULES install -g node --save
-    npm --prefix $NODE_MODULES install -g nodemon@latest --save
+    npm --prefix $NODE_MODULES install nodemon@latest --save
     npm --prefix $NODE_MODULES install formidable@latest --save
     npm --prefix $NODE_MODULES install nodemailer@latest --save
     npm --prefix $NODE_MODULES install optimist@latest --save
