@@ -54,6 +54,8 @@ For example:
     -or-
     aptitude install sendmail
 
+Change the "from_email" variable in /scripts/send_email.js to a legitimate email address. Invalid email addresses can cause the output email to be flagged as spam or a phishing attempt.
+
 
 **Usage**
 
@@ -62,7 +64,7 @@ Determine the IP you are going to connect to, to serve the trufflehunter web pag
     hostname -I
     /sbin/ip a
 
-If you are serving Trufflehunter internally only, then it probably makes sense to use only the internal IP. If you are exposing it to users outside of your network, then you will probably need to use the external IP (and add firewall rules and lock down the trufflehunter directory!)
+If you are serving Trufflehunter internally only, then it makes sense to use the internal IP. If you are exposing it to users outside of your network, then you will need to use the external IP (and add firewall rules and lock down the trufflehunter directory!)
 
 Start the node server to listen for connections:
 
@@ -84,14 +86,12 @@ Connect to Trufflehunter:
 - Add a queue for parse jobs, probably unnecessary until there are multiple concurrent users.
 - Add more PgBadger options to the form.
 - Clean up the code.
-- Add a "trap" command to the Bash script.
-- Revise so that it is all run by an untrusted user (not root)
+- Add a "trap" command to the Bash script to cleanup if the script is aborted.
 - Schedule a process to clean up old files. Links are only shortlived.
-- Mailing the html file is optional, expose that in the interface
 
 
 **Caveats and Bugs**
-- The installation process stinks. It would be nicer if everything was bundled together (suggestions welcome!)
+- The installation process could use some TLC. It would be nicer if everything was bundled together (suggestions welcome!)
 - Security and robustness are sorely lacking.
 
 
