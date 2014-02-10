@@ -19,11 +19,12 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 
 Note: these steps may not be complete. Some cleanup (and preferably packaging) is desired.
 
-    ## Depending on which OS and how node and npm were installed, some permissions might need to be changed.
+    ## Depending on which OS and how node and npm were installed,
+    ## some permissions might need to be changed.
     sudo chmod a+rw -R /usr/share/npm
     sudo chmod a+x -R /usr/share/npm/node_modules/*
     
-    sudo npm config set registry http://registry.npmjs.org/
+    npm config set registry http://registry.npmjs.org/
     export NODE_MODULES=$HOME/trufflehunter/node_modules
     npm --prefix $NODE_MODULES install -g node --save
     npm --prefix $NODE_MODULES install nodemon@latest --save
@@ -33,10 +34,11 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     npm --prefix $NODE_MODULES install semver@latest --save
     npm --prefix $NODE_MODULES install npm-registry-client@latest --save
     
-    # In Ubuntu 13.10, I had to create a symlink to node if not using the "install -g" flag.
+    # In Ubuntu 13.10, I had to create a symlink to node.js because the "node" app didn't exist.
     # sudo ln -s /usr/bin/nodejs /usr/bin/node
     
-A crontab entry must be created for the user who owns the Trufflehunter directory, and the cron job is what is executed every minute and invokes the pgbadger parser. The parsed file is then optionally emailed to the recipient.
+A crontab entry must be created for the user who owns the Trufflehunter directory.
+It is executed every minute and invokes the PgParser parser. The parsed file is then optionally emailed to the recipient.
 
     * * * * * /bin/bash $HOME/trufflehunter/scripts/exec_pgbadger.sh -p 8080
 
