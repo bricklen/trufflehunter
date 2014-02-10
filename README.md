@@ -36,9 +36,9 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     # In Ubuntu 13.10, I had to create a symlink to node if not using the "install -g" flag.
     # sudo ln -s /usr/bin/nodejs /usr/bin/node
     
-A crontab entry must be created (currently, as root) which is what is executed every minute and invokes the pgbadger parser. The parsed file is then optionally emailed to the recipient.
+A crontab entry must be created for the user who owns the Trufflehunter directory, and the cron job is what is executed every minute and invokes the pgbadger parser. The parsed file is then optionally emailed to the recipient.
 
-    * * * * * /bin/bash /path/to/trufflehunter/scripts/exec_pgbadger.sh -p 8080 >> /var/log/trufflehunter.log
+    * * * * * /bin/bash $HOME/trufflehunter/scripts/exec_pgbadger.sh -p 8080
 
 
 
@@ -53,7 +53,8 @@ If you are serving Trufflehunter internally only, then it probably makes sense t
 
 Start the node server to listen for connections:
 
-    sudo $HOME/trufflehunter/node_modules/nodemon/bin/nodemon.js $HOME/trufflehunter/scripts/trufflehunter.js
+    cd trufflehunter
+    node_modules/nodemon/bin/nodemon.js scripts/trufflehunter.js
 
 Connect to Trufflehunter:
 
