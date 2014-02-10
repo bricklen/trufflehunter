@@ -64,7 +64,11 @@ server = http.createServer(function(req, res) {
                     top_num_queries = value;
                 }
                 if ( field == 'send_email_link' ) {
-                    send_email_link = value;
+                    if ( value == 'on' || value == 'yes' ) {
+                        send_email_link = 'on';
+                    } else {
+                        send_email_link = 'off';
+                    }
                 }
             })
 
