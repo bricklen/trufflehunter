@@ -216,6 +216,14 @@ server = http.createServer(function(req, res) {
             res.end(data);
         });
 
+    } else if (ext === '.png') {
+        fs.readFile(rootpath + '/../img/' + fname, function (err, data) {
+            if (err) console.log(err);
+            res.writeHead(200, {'Content-Type': 'image/png'});
+            res.write(data);
+            res.end(data);
+        });
+
     } else {
         res.writeHead(404, {'content-type': 'text/plain'});
         res.end('404');
