@@ -66,12 +66,12 @@ If you are serving Trufflehunter internally only, then it probably makes sense t
 
 Start the node server to listen for connections:
 
-    cd trufflehunter
+    cd $HOME/trufflehunter
     node_modules/nodemon/bin/nodemon.js scripts/trufflehunter.js
 
 Connect to Trufflehunter:
 
-    http://$YOUR_IP/index.html
+    http://$YOUR_IP:8080/index.html
 
 
 
