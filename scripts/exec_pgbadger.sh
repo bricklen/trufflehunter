@@ -227,7 +227,7 @@ done
 ## Try to determine the node port if not supplied
 ## This check is possibly completely bogus.
 if [[ "X$webport" == "X" ]]; then
-    webport=$(netstat -tlpn | grep -E '[0-9]+\/node' | awk '{print $4}' | sed 's/0\.0\.0\.0://g')
+    webport=`(netstat -tlpn | grep -E '[0-9]+\/node' | awk '{print $4}' | sed 's/0\.0\.0\.0://g') 2>/dev/null`
 fi
 
 [[ "X$hostip" != "X" ]] || die 120 "ERROR: host IP not defined."
