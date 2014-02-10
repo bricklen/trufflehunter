@@ -9,6 +9,7 @@ set -o errexit
 ##
 ## Prerequisites
 ##  1. The pgbadger executable must be in the path of whichever user is parsing the data
+##      For example, if the user was "postgres":
 ##      ln -s ~postgres/pgbadger/pgbadger /usr/sbin/pgbadger
 ##  2. Sendmail should be installed and running.
 ##
@@ -17,7 +18,7 @@ set -o errexit
 ##      - Add a scheduled process to remove old files. This should be an add-on script.
 ##
 ## cron job sample
-##      * * * * * /bin/bash /path/to/exec_pgbadger.sh -p 80
+##      * * * * * /bin/bash $HOME/trufflehunter/scripts/exec_pgbadger.sh -p 8080
 ##
 
 PATH=$PATH:/usr/sbin
@@ -28,7 +29,6 @@ pgbadger=$(which pgbadger)
 node=$(which node)
 npm_prefix=$(npm prefix)
 
-#curdir=/root/node_modules/formidable/example
 curdir=`dirname "$(readlink -nf "$0")"`
 
 ## Set this to where the "uploads" directory is
@@ -80,6 +80,7 @@ function send_email
 {
     ## Send an email to the user after the log file has been processed.
     if [[ "X$node" != "X" ]]; then
+        ## Assumes that send_email.js and exec_pgbadger.sh are in the same directory.
         $node ${curdir}/send_email.js --recipient="$1" --url="$weburl/$2" --bytes=$3 --fname="$4"
     else
         echo "node.js not found, so email will not be sent!"
@@ -179,14 +180,9 @@ function do_work
         file_to_parse=${fname_no_ext}_all
     fi
 
-    ## Append the pid and epoch time to the file name.
-    ## EDIT: Leave the original file name as the node script adds some random
-    ## digits to the file name before this script is executed.
-    ##output_htmlname="${file_to_parse}_$$_`date +'%s'`.html"
     output_htmlname="${fname_no_ext}.html"
     cmd="$pgbadger --prefix '$llp' --top $top_num_queries -j2 -o \"$SRCDIR/$output_htmlname\" \"$SRCDIR/$file_to_parse\""
 
-    #echo "About to execute command: $cmd"
     echo "$cmd" | bash -l
 
     if [[ "$send_email" != "no" ]]; then
@@ -235,9 +231,9 @@ if [[ "X$webport" == "X" ]]; then
 fi
 
 [[ "X$hostip" != "X" ]] || die 120 "ERROR: host IP not defined."
-[[ "X$webport" != "X" ]] || die 125 "ERROR: node.js server port is not defined."
 
-## TODO: Add check to see if $webport is being actively listened on, if not, abort.
+## Check to see if $webport is being actively listened on, if not, abort.
+[[ "X$webport" != "X" ]] || die 125 "ERROR: node.js server port is not defined."
 
 cd "$SRCDIR" || die 130 "ERROR: Could not change to $SRCDIR"
 
