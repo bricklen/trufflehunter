@@ -201,7 +201,7 @@ server = http.createServer(function(req, res) {
 //        });
 
     } else if (ext === '.css') {
-        fs.readFile(rootpath + '/../public/css/style.css', function (err, data) {
+        fs.readFile(rootpath + '/../css/style.css', function (err, data) {
             if (err) console.log(err);
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.write(data);
@@ -209,7 +209,7 @@ server = http.createServer(function(req, res) {
         });
 
     } else if (ext === '.gif') {
-        fs.readFile(rootpath + '/../public/img/' + fname, function (err, data) {
+        fs.readFile(rootpath + '/../img/' + fname, function (err, data) {
             if (err) console.log(err);
             res.writeHead(200, {'Content-Type': 'image/gif'});
             res.write(data);
