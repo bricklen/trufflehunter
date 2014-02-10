@@ -91,6 +91,10 @@ function do_work
 {
     confname="$1"
     send_email_bool="$2"
+
+    # TODO: Fix a bug about which email-sending flag should win,
+    #       the command line switch or the value from the config file.
+    send_email_bool='off'
     
     cp "$confname" "$confname.processing" && rm "$confname" || die 133 "ERROR: Could not process file \"$confname\"";
     unset matched llp email logfile
