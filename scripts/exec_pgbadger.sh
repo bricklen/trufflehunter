@@ -90,7 +90,7 @@ function send_email
 function do_work
 {
     confname="$1"
-    send_email="$2"
+    send_email_bool="$2"
     
     cp "$confname" "$confname.processing" && rm "$confname" || die 133 "ERROR: Could not process file \"$confname\"";
     unset matched llp email logfile
@@ -120,6 +120,7 @@ function do_work
             ## I think the command line flag should take precedence.
             if [[ "$value" != "off" ]]; then
                 SEND_EMAIL=
+                send_email_bool='on'
             fi
         fi
     done < "$confname.processing"
@@ -185,7 +186,7 @@ function do_work
 
     echo "$cmd" | bash --login --noprofile
 
-    if [[ "$send_email" != "no" ]]; then
+    if [[ "$send_email_bool" != "off" ]]; then
         ## Send the email with the link
         send_email "$email" "$output_htmlname" "$fsize" "$flastmod" || die 153 "ERROR: Something went wrong sending the email. \"$?\""
     fi
