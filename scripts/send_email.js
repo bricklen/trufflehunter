@@ -3,7 +3,7 @@ var argv = require('optimist')
     .usage('Usage: $0 --recipient ["comma-separated list of email addresses"] --url ["http://your.link.com"] --size [bytes]')
     .demand(['recipient','url'])
     .argv;
-var from_email = 'trufflehunter.webservice@gmail.com'; // Change this to something legitimate
+var from_email = 'user@example.com'; // Change this to something legitimate
 
 // Create a Sendmail transport object
 var transport = nodemailer.createTransport("Sendmail", "/usr/sbin/sendmail");
