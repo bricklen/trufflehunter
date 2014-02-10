@@ -7,10 +7,11 @@ Node.js serves the pages, Formidable parses the form, PgBadger parses the Postgr
 
 **Prerequisites**
 - node.js - See https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-- npm
+- npm - Depending on OS, it can be installed by package manager, or manually (https://npmjs.org/doc/README.html)
 
 **Dependencies**
-- bootstrap
+- bootstrap (no download, index.html calls CDN)
+- jQuery (no download, scripts call CDN's)
 - sendmail, to send notification of completed PgBadger execution.
 - trufflehunter.js listens on port 8080 by default.
 
@@ -42,6 +43,12 @@ It is executed every minute and invokes the PgParser parser. The parsed file is 
 
     * * * * * /bin/bash $HOME/trufflehunter/scripts/exec_pgbadger.sh -p 8080
 
+Install sendmail via your package manager (configuration is left up to the user).
+For example:
+
+    yum install sendmail
+    -or-
+    aptitude install sendmail
 
 
 **Usage**
