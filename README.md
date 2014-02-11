@@ -34,6 +34,7 @@ Note: these steps may not be complete. Some cleanup (and preferably packaging) i
     npm --prefix $NODE_MODULES install optimist@latest --save
     npm --prefix $NODE_MODULES install semver@latest --save
     npm --prefix $NODE_MODULES install npm-registry-client@latest --save
+    npm --prefix $NODE_MODULES install forever@latest --save
     
     # In Ubuntu 13.10, I had to create a symlink to node.js because the "node" app didn't exist.
     sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -68,8 +69,10 @@ If you are serving Trufflehunter internally only, then it makes sense to use the
 
 Start the node server to listen for connections:
 
-    cd $HOME/trufflehunter
-    node_modules/nodemon/bin/nodemon.js scripts/trufflehunter.js
+    export TRUFFLEHUNTER=$HOME/trufflehunter
+    $TRUFFLEHUNTER/node_modules/forever/bin/forever start $TRUFFLEHUNTER/node_modules/nodemon/bin/nodemon.js $TRUFFLEHUNTER/scripts/trufflehunter.js
+    
+    ## Using "forever start <script>" will fork trufflehunter.js into the background, to act as a daemon.
 
 Connect to Trufflehunter:
 
